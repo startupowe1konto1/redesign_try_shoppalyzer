@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Shoppalyzer Design System v2 — Modern Polish SaaS
+   "Less AI, more editorial"
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* ─── BRAND ─────────────────────────────────────────────── */
+    /* Primary navy — lifted, more breathable than original */
+    --primary: 207 58% 28%;          /* #1E4D72 */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 207 58% 22%;
+    --primary-soft: 207 58% 96%;     /* very light tint for backgrounds */
+
+    /* Accent amber — refined, less candy-bright */
+    --accent-brand: 25 80% 56%;      /* #E8843A */
+    --accent-brand-foreground: 0 0% 100%;
+    --accent-brand-hover: 25 80% 48%;
+    --accent-brand-soft: 25 80% 96%;
+
+    /* Success green — recommendation chip "podnieś" */
+    --success: 153 65% 39%;          /* #22A46B */
+    --success-foreground: 0 0% 100%;
+    --success-soft: 153 65% 96%;
+
+    /* Warning yellow — recommendation chip "utrzymaj" */
+    --warning: 38 92% 50%;           /* #F2A60C — refined Allegro-yellow */
+    --warning-foreground: 30 60% 18%;
+    --warning-soft: 38 92% 96%;
+
+    /* Danger red — recommendation chip "obniż" */
+    --danger: 0 70% 52%;             /* #D93838 */
+    --danger-foreground: 0 0% 100%;
+    --danger-soft: 0 70% 97%;
+
+    /* Deep navy for headlines + footer */
+    --brand-navy: 207 64% 18%;       /* #102D45 */
+
+    /* ─── BACKGROUND / SURFACES ─────────────────────────────── */
+    /* Warm off-white — editorial, not pure white */
+    --background: 40 28% 98%;        /* #FAFAF7 */
+    --foreground: 207 64% 14%;       /* deep navy text */
+
+    --surface: 0 0% 100%;            /* card surface */
+    --surface-muted: 40 18% 96%;     /* secondary surface */
+
+    --card: 0 0% 100%;
+    --card-foreground: 207 64% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 207 64% 14%;
+
+    --secondary: 40 18% 95%;
+    --secondary-foreground: 207 64% 14%;
+
+    --muted: 40 14% 94%;
+    --muted-foreground: 207 14% 42%;
+
+    --accent: 207 58% 96%;
+    --accent-foreground: 207 58% 28%;
+
+    --destructive: 0 70% 52%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* ─── BORDERS / RINGS ───────────────────────────────────── */
+    --border: 40 14% 88%;
+    --input: 40 14% 92%;
+    --ring: 207 58% 28%;
+
+    --radius: 0.625rem; /* 10px — slightly tighter than before */
+
+    /* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+    --font-sans: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Newsreader', 'Tiempos', Georgia, serif;
+    --font-mono: 'Geist Mono', 'JetBrains Mono', monospace;
+
+    /* ─── SHADOWS — soft, editorial ─────────────────────────── */
+    --shadow-soft: 0 1px 2px hsl(207 64% 14% / 0.04), 0 4px 12px -4px hsl(207 64% 14% / 0.06);
+    --shadow-medium: 0 4px 16px -4px hsl(207 64% 14% / 0.08), 0 12px 32px -8px hsl(207 64% 14% / 0.10);
+    --shadow-strong: 0 12px 40px -12px hsl(207 64% 14% / 0.18), 0 24px 80px -16px hsl(207 64% 14% / 0.12);
+    --shadow-hero: 0 32px 80px -20px hsl(207 64% 18% / 0.22), 0 16px 40px -12px hsl(207 64% 18% / 0.14);
+
+    /* ─── GRADIENTS ─────────────────────────────────────────── */
+    --gradient-primary: linear-gradient(135deg, hsl(207 58% 32%), hsl(207 64% 18%));
+    --gradient-amber: linear-gradient(135deg, hsl(25 80% 56%), hsl(20 80% 48%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(40 18% 98%));
+    --gradient-hero: linear-gradient(180deg, hsl(40 28% 98%) 0%, hsl(40 28% 98%) 60%, hsl(207 58% 96%) 100%);
+
+    /* ─── TIMING ─────────────────────────────────────────────── */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* ─── SIDEBAR (kept from shadcn defaults) ───────────────── */
+    --sidebar-background: 40 28% 99%;
+    --sidebar-foreground: 207 64% 22%;
+    --sidebar-primary: 207 58% 28%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 207 58% 96%;
+    --sidebar-accent-foreground: 207 58% 28%;
+    --sidebar-border: 40 14% 88%;
+    --sidebar-ring: 207 58% 28%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+    letter-spacing: -0.011em;
+  }
+
+  /* Display headlines — tighter tracking */
+  h1, h2, h3 {
+    letter-spacing: -0.025em;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  /* Editorial serif utility */
+  .font-editorial {
+    font-family: var(--font-serif);
+    font-feature-settings: 'lnum', 'tnum';
+    letter-spacing: -0.01em;
+  }
+
+  /* Tabular numerics for prices/data */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ============================================================
+   Custom utilities
+   ============================================================ */
+@layer utilities {
+  /* Faint chart-fragment grid background */
+  .bg-grid-faint {
+    background-image:
+      linear-gradient(to right, hsl(207 14% 88% / 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(207 14% 88% / 0.4) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .bg-dots-faint {
+    background-image: radial-gradient(hsl(207 14% 80% / 0.5) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Tilt utility for product mockups */
+  .perspective-hero {
+    perspective: 2000px;
+  }
+  .tilt-soft {
+    transform: rotateY(-4deg) rotateX(2deg);
+    transform-style: preserve-3d;
+  }
+
+  /* Editorial rule lines */
+  .rule-thin {
+    border-image: linear-gradient(to right, transparent, hsl(207 14% 50% / 0.4), transparent) 1;
+  }
+
+  /* Animated breathing for hero mockup */
+  @keyframes breathe {
+    0%, 100% { transform: rotateY(-4deg) rotateX(2deg) translateY(0); }
+    50%      { transform: rotateY(-4deg) rotateX(2deg) translateY(-6px); }
+  }
+  .animate-breathe {
+    animation: breathe 6s ease-in-out infinite;
+  }
+
+  /* Soft chip pulse */
+  @keyframes chip-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 currentColor; opacity: 1; }
+    50%      { box-shadow: 0 0 0 6px transparent; opacity: 0.92; }
+  }
+  .animate-chip-pulse {
+    animation: chip-pulse 2.4s ease-in-out infinite;
+  }
+
+  /* Mask fade for decorative SVG layers */
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+  .mask-fade-radial {
+    mask-image: radial-gradient(ellipse at center, black 50%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 50%, transparent 80%);
+  }
+
+  /* Loading intro (Linear-style) */
+  @keyframes intro-out {
+    0%, 75% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+  }
+  .animate-intro-out {
+    animation: intro-out 1.6s ease forwards;
+  }
+  @keyframes intro-fill {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  .animate-intro-fill {
+    animation: intro-fill 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+  }
+
+  /* Atmosphere lines — signature background motif (draws in on view) */
+  .atmosphere-lines path {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+  .atmosphere-lines.play path {
+    animation: line-draw 1.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .atmosphere-lines.play path:nth-child(2) {
+    animation-delay: 0.18s;
+  }
+  .atmosphere-lines.play path:nth-child(3) {
+    animation-delay: 0.32s;
+  }
+  @keyframes line-draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* Reduced-motion accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-breathe,
+    .animate-chip-pulse {
+      animation: none;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
