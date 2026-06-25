@@ -26,7 +26,7 @@ export const HeroVariant1 = () => {
             initial="hidden"
             animate="show"
             transition={{ staggerChildren: 0.1, delayChildren: 0.1 }}
-            className="mx-auto max-w-2xl text-center lg:mx-0 lg:max-w-none lg:text-left"
+            className="min-w-0 mx-auto max-w-2xl text-center lg:mx-0 lg:max-w-none lg:text-left"
           >
             <motion.h1
               variants={fadeUp}
@@ -101,7 +101,7 @@ export const HeroVariant1 = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative mx-auto w-full max-w-xl lg:mx-0 lg:max-w-none"
+            className="relative min-w-0 max-w-full mx-auto w-full sm:max-w-xl lg:mx-0 lg:max-w-none"
           >
             <ServiceFlowAnimation />
           </motion.div>
