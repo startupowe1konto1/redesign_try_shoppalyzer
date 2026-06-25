@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
-import { Target, Eye, Sparkles, Users } from 'lucide-react';
+import { Target, Eye, Sparkles, Users, Building2 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { SectionHeader } from './SectionHeader';
+import { SectionEmblem } from './SectionEmblem';
+import { Atmosphere } from './Atmosphere';
 
 type Block = { Icon: LucideIcon; title: string; desc: string };
 
@@ -28,25 +31,18 @@ const blocks: Block[] = [
 ];
 
 export const AboutUs = () => (
-  <section id="o-nas" className="relative py-24 lg:py-32 bg-surface-muted/40">
-    <div className="container">
-      {/* Section heading */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-15% 0px' }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="max-w-3xl mx-auto text-center mb-14 lg:mb-20"
+  <section id="o-nas" className="relative isolate overflow-hidden py-16 lg:py-24 bg-surface-muted/40">
+    <Atmosphere composition={2} />
+    <div className="container relative">
+      <SectionHeader
+        label="O nas"
+        icon={Building2}
+        className="mb-10 lg:mb-14"
       >
-        <div className="text-[11px] uppercase tracking-[0.22em] font-medium text-muted-foreground mb-5">
-          O nas
-        </div>
-        <h2 className="text-3xl md:text-4xl lg:text-[2.85rem] font-bold tracking-[-0.025em] text-brand-navy leading-[1.1]">
-          Dane zamiast intuicji.
-          <br />
-          <span className="text-primary">Dla każdego sprzedawcy.</span>
-        </h2>
-      </motion.div>
+        Dane zamiast intuicji.
+        <br />
+        <span className="text-primary">Dla <span className="relative whitespace-nowrap">każdego<span aria-hidden className="absolute left-0 -bottom-1 h-[3px] w-full rounded-full bg-accent-brand/70" /></span> sprzedawcy.</span>
+      </SectionHeader>
 
       {/* Nasza historia — featured narrative */}
       <motion.div
@@ -82,17 +78,9 @@ export const AboutUs = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-10% 0px' }}
             transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ y: -4 }}
             className="group relative p-7 lg:p-8 rounded-2xl bg-surface ring-1 ring-border hover:ring-primary/25 hover:shadow-medium transition-all duration-300"
           >
-            <div className="
-              inline-flex h-11 w-11 items-center justify-center rounded-xl
-              bg-primary-soft text-primary ring-1 ring-primary/15
-              group-hover:bg-primary group-hover:text-primary-foreground group-hover:ring-primary
-              transition-all duration-300 mb-5
-            ">
-              <b.Icon className="h-5 w-5" strokeWidth={2} />
-            </div>
+            <SectionEmblem icon={b.Icon} size="sm" className="mb-5" />
             <h3 className="text-xl font-bold tracking-tight text-foreground mb-2 leading-tight">
               {b.title}
             </h3>

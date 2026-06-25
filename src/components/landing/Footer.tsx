@@ -2,13 +2,21 @@ import { Linkedin, Facebook, ArrowUpRight } from 'lucide-react';
 import { useWaitlist } from '@/context/WaitlistContext';
 import { useNavigate } from 'react-router-dom';
 
-const scrollTo = (id: string) => {
-  document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
-};
-
 export const Footer = () => {
   const { openWaitlist } = useWaitlist();
   const navigate = useNavigate();
+
+  // Anchor links live on the landing page. If the target section isn't in the
+  // current DOM (we're on a subpage), navigate home first, then scroll.
+  const scrollTo = (id: string) => {
+    const el = document.querySelector(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/');
+      setTimeout(() => document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' }), 350);
+    }
+  };
 
   return (
     <footer className="relative bg-brand-navy text-white overflow-hidden">
@@ -98,24 +106,13 @@ export const Footer = () => {
               <p className="mt-5 text-sm text-white/55 leading-relaxed max-w-xs">
                 Pomagamy sprzedawcom e-commerce zarabiać więcej.
               </p>
-
-              {/* Status indicator */}
-              <div className="mt-6 inline-flex items-center gap-2 text-[11px] text-white/55">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-success opacity-60 animate-ping" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
-                </span>
-                <span className="uppercase tracking-[0.16em] font-medium">
-                  Wczesny dostęp · 2026
-                </span>
-              </div>
             </div>
 
             {/* Product links */}
             <div className="col-span-1 md:col-span-2 md:col-start-6">
-              <h4 className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 mb-4">
+              <h3 className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 mb-4">
                 Produkt
-              </h4>
+              </h3>
               <ul className="space-y-3 text-sm">
                 <li><FooterLink onClick={() => scrollTo('#korzysci')}>Korzyści</FooterLink></li>
                 <li><FooterLink onClick={() => scrollTo('#jak-to-dziala')}>Jak to działa?</FooterLink></li>
@@ -126,9 +123,9 @@ export const Footer = () => {
 
             {/* Legal links */}
             <div className="col-span-1 md:col-span-2">
-              <h4 className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 mb-4">
+              <h3 className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 mb-4">
                 Prawo
-              </h4>
+              </h3>
               <ul className="space-y-3 text-sm">
                 <li><FooterLink onClick={() => { navigate('/polityka-prywatnosci'); window.scrollTo(0, 0); }}>Polityka prywatności</FooterLink></li>
                 <li><FooterLink onClick={() => { navigate('/regulamin'); window.scrollTo(0, 0); }}>Regulamin</FooterLink></li>
@@ -139,9 +136,9 @@ export const Footer = () => {
 
             {/* Social */}
             <div className="col-span-2 md:col-span-2">
-              <h4 className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 mb-4">
+              <h3 className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 mb-4">
                 Społeczność
-              </h4>
+              </h3>
               <div className="flex gap-2.5">
                 <a
                   href="https://www.linkedin.com/company/shoppalyzer/about/?viewAsMember=true"

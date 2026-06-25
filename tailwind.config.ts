@@ -19,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
-				display: ['Sora', 'Geist', 'system-ui', 'sans-serif'],
+				sans: ['Geist', 'Geist Fallback', 'Inter', 'system-ui', 'sans-serif'],
+				display: ['Sora', 'Sora Fallback', 'Geist', 'system-ui', 'sans-serif'],
 				editorial: ['Newsreader', 'Tiempos', 'Georgia', 'serif'],
 				mono: ['Geist Mono', 'JetBrains Mono', 'monospace'],
 			},

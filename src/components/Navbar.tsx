@@ -39,7 +39,7 @@ export const Navbar = () => {
         el.scrollIntoView({ behavior: 'smooth' });
       } else {
         navigate('/');
-        setTimeout(() => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' }), 120);
+        setTimeout(() => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' }), 350);
       }
     }
   };

@@ -414,7 +414,7 @@ export const ServiceFlowAnimation = () => {
           </div>
 
           {/* Content */}
-          <div className="p-5 min-h-[440px] flex flex-col">
+          <div className="p-5 h-[480px] flex flex-col">
             <StepBar phase={phase} />
 
             {/* Phase progress indicator */}

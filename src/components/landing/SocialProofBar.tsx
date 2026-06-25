@@ -9,25 +9,32 @@ type Integration = {
   /** Brand color (hex without #). Used for the live integration; coming-soon ones rendered muted. */
   color: string;
   live: boolean;
+  /**
+   * Whether Simple Icons actually serves this brand. Amazon (trademark-removed),
+   * BaseLinker and Ceneo are absent from the CDN, so we skip the request and
+   * render the fallback directly — avoids 3 console 404s on every load.
+   */
+  cdnIcon?: boolean;
 };
 
 const integrations: Integration[] = [
-  { name: 'Allegro',         slug: 'allegro',     color: 'FF5A00', live: true  },
-  { name: 'Amazon',          slug: 'amazon',      color: 'FF9900', live: false },
-  { name: 'Shopify',         slug: 'shopify',     color: '7AB55C', live: false },
-  { name: 'WooCommerce',     slug: 'woocommerce', color: '7F54B3', live: false },
-  { name: 'BaseLinker',      slug: 'baselinker',  color: '0084FF', live: false },
-  { name: 'Ceneo',           slug: 'ceneo',       color: 'EE5C28', live: false },
-  { name: 'Google Shopping', slug: 'google',      color: '4285F4', live: false },
+  { name: 'Allegro',         slug: 'allegro',     color: 'FF5A00', live: true,  cdnIcon: true  },
+  { name: 'Amazon',          slug: 'amazon',      color: 'FF9900', live: false, cdnIcon: false },
+  { name: 'Shopify',         slug: 'shopify',     color: '7AB55C', live: false, cdnIcon: true  },
+  { name: 'WooCommerce',     slug: 'woocommerce', color: '7F54B3', live: false, cdnIcon: true  },
+  { name: 'BaseLinker',      slug: 'baselinker',  color: '0084FF', live: false, cdnIcon: false },
+  { name: 'Ceneo',           slug: 'ceneo',       color: 'EE5C28', live: false, cdnIcon: false },
+  { name: 'Google Shopping', slug: 'google',      color: '4285F4', live: false, cdnIcon: true  },
 ];
 
 /** Single integration chip — image with graceful fallback to a Lucide icon. */
 const IntegrationLogo = ({ integration }: { integration: Integration }) => {
   const [failed, setFailed] = useState(false);
-  const { name, slug, color, live } = integration;
+  const { name, slug, color, live, cdnIcon = true } = integration;
 
   const colorParam = live ? color : '94A3B8'; // muted slate when not live
   const logoUrl = `https://cdn.simpleicons.org/${slug}/${colorParam}`;
+  const showFallback = failed || !cdnIcon;
 
   return (
     <span
@@ -47,7 +54,7 @@ const IntegrationLogo = ({ integration }: { integration: Integration }) => {
       )}
 
       {/* Brand logo or fallback */}
-      {failed ? (
+      {showFallback ? (
         <ShoppingBag className={cn('h-3.5 w-3.5 shrink-0', live ? 'text-primary' : 'text-muted-foreground/60')} strokeWidth={2} />
       ) : (
         <img

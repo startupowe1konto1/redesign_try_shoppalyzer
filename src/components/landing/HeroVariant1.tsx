@@ -6,7 +6,7 @@ import { Atmosphere } from './Atmosphere';
 import { APP_SIGNUP_URL } from '@/lib/app-links';
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 18 },
+  hidden: { opacity: 0, y: 16 },
   show:   { opacity: 1, y: 0 },
 };
 
@@ -20,17 +20,17 @@ export const HeroVariant1 = () => {
       <Atmosphere variant="hero" />
 
       <div className="container relative z-10">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-          {/* ─── Copy: left on desktop, centered on mobile ─── */}
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,500px)] lg:gap-16">
+          {/* ─── Copy: entrance animation (transform-only, no layout shift) ─── */}
           <motion.div
             initial="hidden"
             animate="show"
-            transition={{ staggerChildren: 0.12, delayChildren: 0.05 }}
+            transition={{ staggerChildren: 0.1, delayChildren: 0.1 }}
             className="mx-auto max-w-2xl text-center lg:mx-0 lg:max-w-none lg:text-left"
           >
             <motion.h1
               variants={fadeUp}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="font-display text-[2.4rem] sm:text-5xl lg:text-[3.5rem] font-bold leading-[1.04] tracking-[-0.03em] text-brand-navy"
             >
               Allegro nie powie Ci,
@@ -42,16 +42,16 @@ export const HeroVariant1 = () => {
 
             <motion.p
               variants={fadeUp}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="mx-auto mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-muted-foreground lg:mx-0"
             >
               Twój automatyczny analityk Allegro. Zamiast godzin w&nbsp;Excelu,
-              dostajesz gotowe, priorytetyzowane rekomendacje sprzedażowe.
+              dostajesz gotowe rekomendacje sprzedażowe.
             </motion.p>
 
             <motion.div
               variants={fadeUp}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="mt-9 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3"
             >
               <button
@@ -84,7 +84,7 @@ export const HeroVariant1 = () => {
 
             <motion.div
               variants={fadeUp}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 text-sm text-muted-foreground"
             >
               {['Bez karty kredytowej', 'Pierwsza analiza za darmo', 'Anuluj kiedy chcesz'].map((t) => (
@@ -96,11 +96,11 @@ export const HeroVariant1 = () => {
             </motion.div>
           </motion.div>
 
-          {/* ─── Product demo: right on desktop, bottom (centered) on mobile ─── */}
+          {/* ─── Product demo: fixed width, gentle fade-in (no movement) ─── */}
           <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="relative mx-auto w-full max-w-xl lg:mx-0 lg:max-w-none"
           >
             <ServiceFlowAnimation />

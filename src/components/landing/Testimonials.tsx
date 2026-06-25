@@ -28,7 +28,7 @@ const testimonials = [
 ];
 
 const Stars = () => (
-  <div className="flex gap-0.5" aria-label="5 z 5 gwiazdek">
+  <div className="flex gap-0.5" role="img" aria-label="5 z 5 gwiazdek">
     {Array.from({ length: 5 }).map((_, i) => (
       <Star key={i} className="h-3.5 w-3.5 fill-accent-brand text-accent-brand" />
     ))}

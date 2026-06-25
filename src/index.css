@@ -3,6 +3,28 @@
 @tailwind utilities;
 
 /* ============================================================
+   Metric-adjusted fallback fonts — prevent font-swap layout shift.
+   The fallback (Arial) is scaled to occupy the same space as the
+   web font, so swapping in Sora/Geist does not reflow the layout.
+   ============================================================ */
+@font-face {
+  font-family: 'Sora Fallback';
+  src: local('Arial');
+  ascent-override: 95.7%;
+  descent-override: 26.6%;
+  line-gap-override: 0%;
+  size-adjust: 104.7%;
+}
+@font-face {
+  font-family: 'Geist Fallback';
+  src: local('Arial');
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
+/* ============================================================
    Shoppalyzer Design System v2 — Modern Polish SaaS
    "Less AI, more editorial"
    ============================================================ */
@@ -129,6 +151,12 @@
   h1, h2, h3 {
     letter-spacing: -0.025em;
     font-feature-settings: 'cv11', 'ss01';
+  }
+
+  /* Brand display font (Sora) on all page headings.
+     Tailwind utilities like `font-display` still override where set. */
+  h1, h2 {
+    font-family: 'Sora', 'Sora Fallback', 'Geist', 'Geist Fallback', system-ui, sans-serif;
   }
 
   /* Editorial serif utility */

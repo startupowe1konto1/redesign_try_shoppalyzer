@@ -22,20 +22,22 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <LoadingIntro />
       <Navbar />
-      {variant === '2' || variant === '3' ? (
-        <Suspense fallback={<div className="min-h-[600px]" />}>
-          {variant === '2' ? <HeroVariant2 /> : <HeroVariant3 />}
-        </Suspense>
-      ) : (
-        <HeroVariant1 />
-      )}
-      <SocialProofBar />
-      <BenefitsBento />
-      <HowItWorks />
-      <Pricing />
-      <Testimonials />
-      <FAQ />
-      <FinalCTA />
+      <main>
+        {variant === '2' || variant === '3' ? (
+          <Suspense fallback={<div className="min-h-[600px]" />}>
+            {variant === '2' ? <HeroVariant2 /> : <HeroVariant3 />}
+          </Suspense>
+        ) : (
+          <HeroVariant1 />
+        )}
+        <SocialProofBar />
+        <BenefitsBento />
+        <HowItWorks />
+        <Pricing />
+        <Testimonials />
+        <FAQ />
+        <FinalCTA />
+      </main>
       <StickyCTA />
     </div>
   );
