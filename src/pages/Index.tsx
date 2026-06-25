@@ -11,6 +11,7 @@ import { FAQ } from '@/components/landing/FAQ';
 import { FinalCTA } from '@/components/landing/FinalCTA';
 import { StickyCTA } from '@/components/landing/StickyCTA';
 import { LoadingIntro } from '@/components/landing/LoadingIntro';
+import { DiagOverlay } from '@/components/landing/DiagOverlay';
 
 const HeroVariant2 = lazy(() => import('@/components/landing/HeroVariant2').then(m => ({ default: m.HeroVariant2 })));
 const HeroVariant3 = lazy(() => import('@/components/landing/HeroVariant3').then(m => ({ default: m.HeroVariant3 })));
@@ -21,6 +22,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <LoadingIntro />
+      <DiagOverlay />
       <Navbar />
       <main>
         {variant === '2' || variant === '3' ? (
