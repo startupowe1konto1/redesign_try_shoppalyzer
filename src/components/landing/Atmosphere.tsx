@@ -46,11 +46,11 @@ export const Atmosphere = ({ variant = 'section', dark = false, composition = 1,
       <div ref={ref} aria-hidden className={`pointer-events-none absolute inset-0 -z-10 overflow-hidden ${className}`}>
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-primary-soft/50" />
         <div
-          className="absolute left-[6%] top-[-140px] h-[480px] w-[480px] rounded-full blur-3xl"
+          className="absolute left-[6%] top-[-140px] h-[300px] w-[300px] sm:h-[480px] sm:w-[480px] rounded-full blur-3xl"
           style={{ background: 'radial-gradient(circle, hsl(207 58% 30% / 0.16), transparent 70%)' }}
         />
         <div
-          className="absolute right-[2%] top-[-100px] h-[520px] w-[520px] rounded-full blur-3xl"
+          className="absolute right-[2%] top-[-100px] h-[320px] w-[320px] sm:h-[520px] sm:w-[520px] rounded-full blur-3xl"
           style={{ background: 'radial-gradient(circle, hsl(25 80% 56% / 0.12), transparent 70%)' }}
         />
         <svg

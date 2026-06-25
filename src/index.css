@@ -138,6 +138,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    /* Prevent any transient horizontal overflow from widening the layout
+       viewport on mobile (Android Chrome would briefly render the desktop
+       layout, then snap to mobile). `clip` (not `hidden`) keeps the sticky
+       navbar working since it does not create a scroll container. */
+    overflow-x: clip;
   }
 
   body {
@@ -145,6 +150,8 @@
     font-family: var(--font-sans);
     font-feature-settings: 'cv11', 'ss01', 'ss03';
     letter-spacing: -0.011em;
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   /* Display headlines — tighter tracking */
